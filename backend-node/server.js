@@ -10,6 +10,9 @@ server.use(
   })
 );
 
+const puppeteerRoute = require("./Puppeteer");
+server.use("/", puppeteerRoute);
+
 server.listen(process.env.PORT, () => {
   console.log(`Server is running on port: ${process.env.PORT}`);
 });
