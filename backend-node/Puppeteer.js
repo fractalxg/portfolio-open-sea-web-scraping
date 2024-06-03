@@ -6,7 +6,20 @@ async function run() {
   const page = await browser.newPage();
   await page.goto(process.env.SITE);
 
-  await page.screenshot({ path: "example.png" });
+  // const html = await page.content();
+  // console.log(html)
+
+  // const title = await page.evaluate(() => document.title);
+  // console.log(title);
+
+  // const text = await page.evaluate(() => document.body.innerText)
+  // console.log(text);
+
+  const links = await page.evaluate(() =>
+    Array.from(document.querySelectorAll('a'), (e) => e.href)
+  );
+  console.log(links);
+
   await browser.close();
 }
 run();
